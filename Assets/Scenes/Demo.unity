@@ -490,15 +490,19 @@ MonoBehaviour:
   - {fileID: 1027180474}
   - {fileID: 431971212}
   - {fileID: 117349750}
-  steamObjects:
-  - {fileID: 2000211637}
-  - {fileID: 973835598}
-  - {fileID: 2066314941}
-  - {fileID: 1289444960}
-  - {fileID: 941571975}
-  - {fileID: 1034816022}
+  pipes:
+  - steamImages:
+    - {fileID: 2000211637}
+    - {fileID: 973835598}
+  - steamImages:
+    - {fileID: 2066314941}
+    - {fileID: 1289444960}
+  - steamImages:
+    - {fileID: 941571975}
+    - {fileID: 1034816022}
   startUpDelay: 1
   playerStart: 1
+  lifes: 3
 --- !u!4 &403017848
 Transform:
   m_ObjectHideFlags: 0

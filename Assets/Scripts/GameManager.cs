@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour {
     public Player[] playerObjects;
     public Image lifeText;
     public Image[] lifeObjects;
-    public Image[] steamObjects;
+    public Pipe[] pipes;
 
 
     [SerializeField]
@@ -20,6 +20,12 @@ public class GameManager : MonoBehaviour {
     {
         public Image image;
         public Image[] wrenches;
+    }
+
+    [System.Serializable]
+    public struct Pipe
+    {
+        public Image[] steamImages;
     }
 
     [SerializeField]
@@ -112,9 +118,12 @@ public class GameManager : MonoBehaviour {
                 playerObjects[i].wrenches[j].gameObject.SetActive(false);
             }
         }
-        for (int i = 0; i < steamObjects.Length; i++)
+        for (int i = 0; i < pipes.Length; i++)
         {
-            steamObjects[i].gameObject.SetActive(false);
+            for (int j = 0; j < pipes[i].steamImages.Length; j++)
+            {
+                pipes[i].steamImages[j].gameObject.SetActive(false);
+            }
         }
         for (int i = 0; i < lifeObjects.Length; i++)
         {

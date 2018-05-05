@@ -26,33 +26,38 @@ public class GameManager : MonoBehaviour {
     int playerStart = 1;
 
     int currentPlayer;
+    int currentWrench = 0;
 
 	// Use this for initialization
 	void Start () {
         currentPlayer = playerStart;
-	}
 
-    float sUD = 0;
+        Invoke("StartGame", startUpDelay);
+	}
 
 	// Update is called once per frame
 	void Update () {
 
-        if(sUD >= startUpDelay)
-        {
-            StartGame();
-        }
-        else
-        {
-            sUD += Time.deltaTime;
-        }
-
         if (Input.GetKeyDown(KeyCode.A))
         {
-            
+            currentPlayer--;
+            currentPlayer = Mathf.Clamp(currentPlayer, 0, playerObjects.Length-1);
+
+            ShowPlayer(currentPlayer);
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
+            currentPlayer++;
+            currentPlayer = Mathf.Clamp(currentPlayer, 0, playerObjects.Length-1);
 
+            ShowPlayer(currentPlayer);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (currentWrench == 0) currentWrench++;
+            else currentWrench--;
+            ShowWrench(currentPlayer, currentWrench);
         }
 
     }
@@ -73,6 +78,7 @@ public class GameManager : MonoBehaviour {
             playerObjects[i].image.gameObject.SetActive((i == playerIndex) ? true : false);
         }
         ShowWrench(playerIndex, 0);
+        currentWrench = 0;
     }
 
     void ShowWrench(int playerIndex, int wrenchIndex)
@@ -81,7 +87,6 @@ public class GameManager : MonoBehaviour {
         {
             playerObjects[playerIndex].wrenches[i].gameObject.SetActive((i == wrenchIndex) ? true : false);
         }
-        
     }
 
     void HideAll()

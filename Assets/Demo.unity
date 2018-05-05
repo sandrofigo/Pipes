@@ -472,6 +472,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 446220b1bb9365f42aa4a6df8dbdb85f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerObjects:
+  - image: {fileID: 925695751}
+    wrenches:
+    - {fileID: 370116024}
+    - {fileID: 1173495721}
+  - image: {fileID: 1370192275}
+    wrenches:
+    - {fileID: 1919910986}
+    - {fileID: 707714277}
+  - image: {fileID: 1627867046}
+    wrenches:
+    - {fileID: 34223237}
+    - {fileID: 630347551}
+  lifeText: {fileID: 509944844}
+  lifeObjects:
+  - {fileID: 1027180474}
+  - {fileID: 431971212}
+  - {fileID: 117349750}
+  steamObjects:
+  - {fileID: 2000211637}
+  - {fileID: 973835598}
+  - {fileID: 2066314941}
+  - {fileID: 1289444960}
+  - {fileID: 941571975}
+  - {fileID: 1034816022}
+  startUpDelay: 1
+  playerStart: 1
 --- !u!4 &403017848
 Transform:
   m_ObjectHideFlags: 0

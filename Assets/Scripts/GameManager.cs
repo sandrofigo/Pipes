@@ -193,7 +193,7 @@ public class GameManager : MonoBehaviour
         lifes = 3;
         ShowLifes();
 
-        score = 80;
+        score = 0;
         ShowScore();
 
         for (int i = 0; i < pipes.Length; i++)

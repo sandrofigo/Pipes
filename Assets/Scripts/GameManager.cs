@@ -49,6 +49,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     int lifes = 3;
 
+    int score = 0;
+
     float[] valvePressures;
 
     [SerializeField]
@@ -78,6 +80,15 @@ public class GameManager : MonoBehaviour
     Image cover;
 
     [SerializeField]
+    Image firstDigit;
+    [SerializeField]
+    Image secondDigit;
+    [SerializeField]
+    Sprite[] firstDigitImages;
+    [SerializeField]
+    Sprite[] secondDigitImages;
+
+    [SerializeField]
     AudioSource walkSound;
     [SerializeField]
     AudioSource fixSound;
@@ -85,6 +96,8 @@ public class GameManager : MonoBehaviour
     AudioSource valvePopSound;
     [SerializeField]
     AudioSource lifeLoseSound;
+    [SerializeField]
+    AudioSource lifeGainSound;
 
     // Use this for initialization
     void Start()
@@ -131,6 +144,11 @@ public class GameManager : MonoBehaviour
                 else currentWrench--;
                 ShowWrench(currentPlayer, currentWrench);
 
+                if (valvePressures[currentPlayer] >= minValvePressure)
+                {
+                    AddScore();
+                }
+
                 if (valvePressures[currentPlayer] > 0) valvePressures[currentPlayer] = Mathf.Clamp(valvePressures[currentPlayer] - wrenchFixValue, 0, 1);
                 wrenchTime = wrenchTurnDelay;
 
@@ -150,23 +168,7 @@ public class GameManager : MonoBehaviour
 
                 if (valvePressures[i] > 1f)
                 {
-                    gameState = GameState.ValveAnimationPlaying;
-                    canWalk = false;
-                    canFix = false;
-
-                    lifeLoseSound.Play();
-
-                    lifes--;
-                    ShowLifes();
-
-                    for (int j = 0; j < pipes.Length; j++)
-                    {
-                        if (j != i) DisableSteam(j);
-                    }
-
-                    valvePopSound.Play();
-
-                    StartCoroutine(ValveAnimation(i));
+                    PopValve(i);
                     break;
                 }
             }
@@ -189,6 +191,9 @@ public class GameManager : MonoBehaviour
         lifes = 3;
         ShowLifes();
 
+        score = 80;
+        ShowScore();
+
         for (int i = 0; i < pipes.Length; i++)
         {
             EnableValve(i, 0);
@@ -205,6 +210,44 @@ public class GameManager : MonoBehaviour
         canFix = true;
 
         gameState = GameState.Playing;
+    }
+
+    void AddScore()
+    {
+        score++;
+
+        if(score == 100)
+        {
+            lifes = Mathf.Clamp(lifes + 1, 0, 4);
+            lifeGainSound.Play();
+            score = 0;
+            ShowLifes();
+        }
+
+        ShowScore();
+    }
+
+    void PopValve(int valveIndex)
+    {
+        gameState = GameState.ValveAnimationPlaying;
+        canWalk = false;
+        canFix = false;
+
+        lifeLoseSound.Play();
+
+        difficulty *= 0.80f;
+
+        lifes--;
+        ShowLifes();
+
+        for (int j = 0; j < pipes.Length; j++)
+        {
+            if (j != valveIndex) DisableSteam(j);
+        }
+
+        valvePopSound.Play();
+
+        StartCoroutine(ValveAnimation(valveIndex));
     }
 
     void EnableSteam(int pipeIndex)
@@ -259,6 +302,17 @@ public class GameManager : MonoBehaviour
         {
             playerObjects[playerIndex].wrenches[i].gameObject.SetActive(i == wrenchIndex ? true : false);
         }
+    }
+
+    void ShowScore()
+    {
+        int s = Mathf.Clamp(score, 0, 100);
+
+        int firstDigitNumber = s % 10;
+        int secondDigitNumber = s / 10;
+
+        firstDigit.sprite = firstDigitImages[firstDigitNumber];
+        secondDigit.sprite = secondDigitImages[secondDigitNumber];
     }
 
     void ShowLifes()

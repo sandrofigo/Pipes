@@ -78,8 +78,16 @@ public class GameManager : MonoBehaviour {
         ShowPlayer(currentPlayer);
 
         ShowLifes();
+
+        EnableSteam(0);
     }
 
+    void EnableSteam(int pipeIndex)
+    {
+        int rndSteam = Random.Range(0, pipes[pipeIndex].steamImages.Length);
+        pipes[pipeIndex].steamImages[rndSteam].gameObject.SetActive(true);
+        pipes[pipeIndex].steamImages[rndSteam].GetComponent<Steam>().blink = true;
+    }
     
     void ShowPlayer(int playerIndex)
     {

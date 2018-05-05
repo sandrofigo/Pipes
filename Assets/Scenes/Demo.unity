@@ -944,6 +944,7 @@ GameObject:
   - component: {fileID: 941571976}
   - component: {fileID: 941571975}
   - component: {fileID: 941571977}
+  - component: {fileID: 941571978}
   m_Layer: 5
   m_Name: Steam 4
   m_TagString: Untagged
@@ -1016,6 +1017,19 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.319}
   m_EffectDistance: {x: 1, y: -1.5}
   m_UseGraphicAlpha: 1
+--- !u!114 &941571978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 941571973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a52b17c6f43109747af738e1f35bfb09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blinkDelay: 1
+  blink: 0
 --- !u!1 &953679308
 GameObject:
   m_ObjectHideFlags: 0
@@ -1135,6 +1149,7 @@ GameObject:
   - component: {fileID: 973835599}
   - component: {fileID: 973835598}
   - component: {fileID: 973835600}
+  - component: {fileID: 973835601}
   m_Layer: 5
   m_Name: Steam 1
   m_TagString: Untagged
@@ -1207,6 +1222,19 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.319}
   m_EffectDistance: {x: 1, y: -1.5}
   m_UseGraphicAlpha: 1
+--- !u!114 &973835601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 973835596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a52b17c6f43109747af738e1f35bfb09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blinkDelay: 1
+  blink: 0
 --- !u!1 &1027180472
 GameObject:
   m_ObjectHideFlags: 0
@@ -1301,6 +1329,7 @@ GameObject:
   - component: {fileID: 1034816023}
   - component: {fileID: 1034816022}
   - component: {fileID: 1034816024}
+  - component: {fileID: 1034816025}
   m_Layer: 5
   m_Name: Steam 5
   m_TagString: Untagged
@@ -1373,6 +1402,19 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.319}
   m_EffectDistance: {x: 1, y: -1.5}
   m_UseGraphicAlpha: 1
+--- !u!114 &1034816025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1034816020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a52b17c6f43109747af738e1f35bfb09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blinkDelay: 1
+  blink: 0
 --- !u!1 &1173495719
 GameObject:
   m_ObjectHideFlags: 0
@@ -1467,6 +1509,7 @@ GameObject:
   - component: {fileID: 1289444961}
   - component: {fileID: 1289444960}
   - component: {fileID: 1289444962}
+  - component: {fileID: 1289444963}
   m_Layer: 5
   m_Name: Steam 3
   m_TagString: Untagged
@@ -1539,6 +1582,19 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.319}
   m_EffectDistance: {x: 1, y: -1.5}
   m_UseGraphicAlpha: 1
+--- !u!114 &1289444963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1289444958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a52b17c6f43109747af738e1f35bfb09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blinkDelay: 1
+  blink: 0
 --- !u!1 &1370192273
 GameObject:
   m_ObjectHideFlags: 0
@@ -2014,6 +2070,7 @@ GameObject:
   - component: {fileID: 2000211638}
   - component: {fileID: 2000211637}
   - component: {fileID: 2000211639}
+  - component: {fileID: 2000211640}
   m_Layer: 5
   m_Name: Steam 0
   m_TagString: Untagged
@@ -2086,6 +2143,19 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.319}
   m_EffectDistance: {x: 1, y: -1.5}
   m_UseGraphicAlpha: 1
+--- !u!114 &2000211640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2000211635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a52b17c6f43109747af738e1f35bfb09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blinkDelay: 1
+  blink: 0
 --- !u!1 &2066314939
 GameObject:
   m_ObjectHideFlags: 0
@@ -2097,6 +2167,7 @@ GameObject:
   - component: {fileID: 2066314942}
   - component: {fileID: 2066314941}
   - component: {fileID: 2066314943}
+  - component: {fileID: 2066314944}
   m_Layer: 5
   m_Name: Steam 2
   m_TagString: Untagged
@@ -2169,3 +2240,16 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.319}
   m_EffectDistance: {x: 1, y: -1.5}
   m_UseGraphicAlpha: 1
+--- !u!114 &2066314944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2066314939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a52b17c6f43109747af738e1f35bfb09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blinkDelay: 1
+  blink: 0

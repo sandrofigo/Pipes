@@ -175,7 +175,7 @@ public class GameManager : MonoBehaviour
 
         }
 
-        if (Input.GetKeyDown(KeyCode.Tab)) cover.enabled = !cover.enabled;
+        if (Input.GetKeyDown(KeyCode.Tab)) cover.gameObject.SetActive(!cover.gameObject.activeInHierarchy);
     }
 
     void StartGame()

@@ -176,6 +176,8 @@ public class GameManager : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.Tab)) cover.gameObject.SetActive(!cover.gameObject.activeInHierarchy);
+
+        if (Input.GetKeyDown(KeyCode.Escape)) Application.Quit();
     }
 
     void StartGame()

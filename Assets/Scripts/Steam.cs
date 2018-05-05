@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Steam : MonoBehaviour {
+public class Steam : MonoBehaviour
+{
 
-    [SerializeField]
-    float blinkDelay = 1f;
+    float blinkDelay = 0.5f;
 
     public bool blink = false;
 
@@ -21,16 +21,16 @@ public class Steam : MonoBehaviour {
 
     private void Update()
     {
-        if (blink)
-        {
-            t += Time.deltaTime;
 
-            if(t >= blinkDelay)
-            {
-                image.enabled = !image.enabled;
-                t = 0;
-            }
+
+        t += Time.deltaTime;
+
+        if (t >= blinkDelay)
+        {
+            if (blink) image.enabled = !image.enabled;
+            t = 0;
         }
+
     }
 
 }

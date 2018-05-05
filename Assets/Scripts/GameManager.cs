@@ -28,6 +28,9 @@ public class GameManager : MonoBehaviour {
     int currentPlayer;
     int currentWrench = 0;
 
+    [SerializeField]
+    int lifes = 3;
+
 	// Use this for initialization
 	void Start () {
         currentPlayer = playerStart;
@@ -68,6 +71,7 @@ public class GameManager : MonoBehaviour {
 
         ShowPlayer(currentPlayer);
 
+        ShowLifes();
     }
 
     
@@ -75,7 +79,7 @@ public class GameManager : MonoBehaviour {
     {
         for (int i = 0; i < playerObjects.Length; i++)
         {
-            playerObjects[i].image.gameObject.SetActive((i == playerIndex) ? true : false);
+            playerObjects[i].image.gameObject.SetActive(i == playerIndex ? true : false);
         }
         ShowWrench(playerIndex, 0);
         currentWrench = 0;
@@ -85,7 +89,16 @@ public class GameManager : MonoBehaviour {
     {
         for (int i = 0; i < playerObjects[playerIndex].wrenches.Length; i++)
         {
-            playerObjects[playerIndex].wrenches[i].gameObject.SetActive((i == wrenchIndex) ? true : false);
+            playerObjects[playerIndex].wrenches[i].gameObject.SetActive(i == wrenchIndex ? true : false);
+        }
+    }
+
+    void ShowLifes()
+    {
+        lifeText.gameObject.SetActive(true);
+        for (int i = 0; i < lifeObjects.Length; i++)
+        {
+            lifeObjects[i].gameObject.SetActive(i < lifes ? true : false);
         }
     }
 

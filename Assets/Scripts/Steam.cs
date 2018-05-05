@@ -22,15 +22,20 @@ public class Steam : MonoBehaviour
     private void Update()
     {
 
-
-        t += Time.deltaTime;
-
-        if (t >= blinkDelay)
+        if (blink)
         {
-            if (blink) image.enabled = !image.enabled;
-            t = 0;
-        }
+            t += Time.deltaTime;
 
+            if (t >= blinkDelay)
+            {
+                image.enabled = !image.enabled;
+                t = 0;
+            }
+        }
+        else
+        {
+            image.enabled = true;
+        }
     }
 
 }

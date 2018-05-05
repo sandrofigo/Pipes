@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     int lifes = 3;
 
-    float[] valvePressures = new float[3];
+    float[] valvePressures;
 
     [SerializeField]
     float minValvePressure = 0.2f;
@@ -75,16 +75,21 @@ public class GameManager : MonoBehaviour
     bool canFix;
 
     [SerializeField]
+    Image cover;
+
+    [SerializeField]
     AudioSource walkSound;
     [SerializeField]
     AudioSource fixSound;
     [SerializeField]
     AudioSource valvePopSound;
+    [SerializeField]
+    AudioSource lifeLoseSound;
 
     // Use this for initialization
     void Start()
     {
-        currentPlayer = playerStart;
+        
         gameState = GameState.StartUp;
 
         Invoke("StartGame", startUpDelay);
@@ -149,6 +154,8 @@ public class GameManager : MonoBehaviour
                     canWalk = false;
                     canFix = false;
 
+                    lifeLoseSound.Play();
+
                     lifes--;
                     ShowLifes();
 
@@ -165,20 +172,29 @@ public class GameManager : MonoBehaviour
             }
 
         }
+
+        if (Input.GetKeyDown(KeyCode.Tab)) cover.enabled = !cover.enabled;
     }
 
     void StartGame()
     {
-        HideAll();
+        ShowAll(false);
+
+        DisableSteam();
+
+        currentPlayer = playerStart;
 
         ShowPlayer(currentPlayer);
 
+        lifes = 3;
         ShowLifes();
 
         for (int i = 0; i < pipes.Length; i++)
         {
             EnableValve(i, 0);
         }
+
+        valvePressures = new float[3];
 
         for (int i = 0; i < valvePressures.Length; i++)
         {
@@ -254,32 +270,32 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void HideAll()
+    void ShowAll(bool state)
     {
         for (int i = 0; i < playerObjects.Length; i++)
         {
-            playerObjects[i].image.gameObject.SetActive(false);
+            playerObjects[i].image.gameObject.SetActive(state);
             for (int j = 0; j < playerObjects[i].wrenches.Length; j++)
             {
-                playerObjects[i].wrenches[j].gameObject.SetActive(false);
+                playerObjects[i].wrenches[j].gameObject.SetActive(state);
             }
         }
         for (int i = 0; i < pipes.Length; i++)
         {
             for (int j = 0; j < pipes[i].steamImages.Length; j++)
             {
-                pipes[i].steamImages[j].gameObject.SetActive(false);
+                pipes[i].steamImages[j].gameObject.SetActive(state);
             }
             for (int j = 0; j < pipes[i].valves.Length; j++)
             {
-                pipes[i].valves[j].gameObject.SetActive(false);
+                pipes[i].valves[j].gameObject.SetActive(state);
             }
         }
         for (int i = 0; i < lifeObjects.Length; i++)
         {
-            lifeObjects[i].gameObject.SetActive(false);
+            lifeObjects[i].gameObject.SetActive(state);
         }
-        lifeText.gameObject.SetActive(false);
+        lifeText.gameObject.SetActive(state);
     }
 
     IEnumerator ValveAnimation(int pipeIndex)
@@ -296,8 +312,29 @@ public class GameManager : MonoBehaviour
         valvePressures[pipeIndex] = valvePenalty;
         EnableValve(pipeIndex, 0);
 
-        gameState = GameState.Playing;
+        
         canWalk = true;
         canFix = true;
+
+        if (lifes == 0)
+        {
+            gameState = GameState.GameOver;
+            StartCoroutine(GameOverAnimation());
+        }
+        else
+        {
+            gameState = GameState.Playing;
+        }
+    }
+
+    IEnumerator GameOverAnimation()
+    {
+        DisableSteam();
+
+        ShowAll(true);
+
+        yield return new WaitForSeconds(2f);
+
+        StartGame();
     }
 }

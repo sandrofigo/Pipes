@@ -1,5 +1,6 @@
-
-![showcase](https://github.com/FireFlame74/Pipes/blob/master/GitHub/export.gif "Showcase")
+<div align="center">
+  <img src="https://github.com/FireFlame74/Pipes/blob/master/GitHub/export.gif"></img>
+</div>
 
 A game made for the LCD-Jam in 2018.
 
